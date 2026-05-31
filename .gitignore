@@ -1,0 +1,22 @@
+# System
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Obsidian workspace (keep vault files, skip user-specific state)
+.obsidian/workspace*
+.obsidian/cache
+
+# Vault runtime output (lint/review reports)
+.lint/
+.review/
