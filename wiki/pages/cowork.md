@@ -55,4 +55,5 @@ Cowork can also be used to create new Skills — when the Skill involves testing
 ## Sources
 
 - [[wiki/sources/manuale-seconda-lezione]] — Cowork introduced with the Beas documentation analysis exercise
-- [[wiki/sources/manuale-quinta-lezione]] — Cowork in the SDD workflow: project configuration generation- [[wiki/sources/manuale-sesta-lezione]] — Cowork as a Skill creation environment
+- [[wiki/sources/manuale-quinta-lezione]] — Cowork in the SDD workflow: project configuration generation
+- [[wiki/sources/manuale-sesta-lezione]] — Cowork as a Skill creation environment

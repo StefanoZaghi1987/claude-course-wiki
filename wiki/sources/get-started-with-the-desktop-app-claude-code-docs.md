@@ -32,3 +32,5 @@ Desktop and CLI are interoperable: run both simultaneously on the same project, 
 - [[wiki/pages/claude-desktop]] — the Desktop app wiki page
 - [[wiki/pages/claude-code]] — the CLI that shares configuration
 - [[wiki/pages/permission-modes]] — permission modes available in the Desktop Code tab
+- [[wiki/pages/plugins]] — plugins installed via the + button in Desktop Code
+- [[wiki/pages/skills]] — skills accessible via the / command menu in Desktop Code

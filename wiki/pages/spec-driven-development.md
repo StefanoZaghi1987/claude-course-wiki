@@ -46,6 +46,7 @@ Development plans and specifications should be saved and versioned like code —
 - [[wiki/pages/prompt-engineering]] — spec writing is the evolution of prompt engineering
 - [[wiki/pages/sub-agents]] — SDD advanced workflow delegates to parallel sub-agents
 - [[wiki/pages/meta-prompting]] — brainstorming-based meta-prompting feeds into spec generation
+- [[wiki/pages/agent-driven-development]] — SADD is the parallelized execution phase of the Advanced SDD workflow
 
 ## Sources
 
@@ -62,67 +63,61 @@ SDD rests on a single structural claim: with LLMs, the spec-to-code relationship
 
 ### Four approaches, one decision
 
-The course situates SDD within a four-approach model of AI-assisted work: Waterfall (linear upfront planning), Agile (iterative decomposition), generic/unstructured AI use, and Vibe Coding. The distinction between "generic AI" and "Vibe Coding" matters: the former at least uses AI for ideation before iteration; the latter — coined by Andrej Karpathy — is pure in-the-moment responsiveness with no structure at any stage. SDD is not a fifth approach but what makes any of the first three coherent in an AI context: it provides the specification structure that transforms Claude from a probabilistic generator into a deterministic executor. [[wiki/sources/manuale-prima-lezione]]
+The course situates SDD within a four-approach model of AI-assisted work: Waterfall (linear upfront planning), Agile (iterative decomposition), generic/unstructured AI use, and Vibe Coding. The distinction between "generic AI" and "Vibe Coding" matters: the former at least uses AI for ideation before iteration; the latter — coined by Andrej Karpathy — is pure in-the-moment responsiveness with no structure at any stage. SDD is not a fifth approach but what makes any of the structured three coherent in an AI context: it provides the specification that transforms Claude from a probabilistic generator into a deterministic executor. [[wiki/sources/manuale-prima-lezione]]
 
-The course instructor's "stone" metaphor is clarifying: "I don't throw the stone and look where it landed. I throw the stone. Meanwhile I run, I chase the stone to see how it's progressing. The time is roughly the same, but I end up with a result qualitatively much better than what I'd have produced alone." This reframes the SDD value proposition from "saves time" to "enables work I couldn't produce alone" — particularly relevant for non-developers. [[wiki/sources/manuale-prima-lezione]]
+The course instructor's "stone" metaphor: "I don't throw the stone and look where it landed. I throw the stone. Meanwhile I run, I chase the stone to see how it's progressing. The time is roughly the same, but I end up with a result qualitatively much better than what I'd have produced alone." This reframes the SDD value proposition from "saves time" to "enables work I couldn't produce alone" — particularly relevant for non-developers. [[wiki/sources/manuale-prima-lezione]]
 
-### The five principles as a system
+### The five principles: two formulations
 
-The five principles are mutually reinforcing, not independent guidelines:
+The five SDD principles have two distinct formulations across the course materials. Lesson 4 presents: (1) Separazione del cosa dal come, (2) Granularità controllata, (3) Review iterativa con cicli di feedback, (4) Controllo umano sulle decisioni critiche, (5) La specifica come documentazione di progetto. Lesson 5 re-labels them: (1) Analisi preventiva, (2) Separazione cosa/come, (3) Decomposizione granulare, (4) Human-in-the-Loop, (5) Iterazione strutturata. The underlying substance is identical; lesson 5 shifts principle 1 from "what/how separation" to "preventive analysis" — foregrounding *upfront analysis* as the first mental discipline, before the what/how distinction becomes operative. This page uses the lesson 5 formulation as the more pedagogically complete version. [[wiki/sources/manuale-quarta-lezione]] [[wiki/sources/manuale-quinta-lezione]]
 
-**What/how separation** is the hardest to execute. The course identifies both failure modes explicitly: a spec too restrictive limits Claude's creativity; a spec too vague causes the AI to make unintended architectural decisions autonomously — described as "the worst possible scenario." The practical rule is to specify behavior and constraints, not code structure. [[wiki/sources/manuale-quarta-lezione]]
+**What/how separation** is the hardest to execute. Both failure modes are identified explicitly: a spec too restrictive limits Claude's creativity; a spec too vague causes the AI to make unintended architectural decisions autonomously — described as "the worst possible scenario." The practical rule is to specify behavior and constraints, not code structure. [[wiki/sources/manuale-quarta-lezione]]
 
-**Granular decomposition** is what makes context management tractable. Claude Code's context window degrades over long sessions as compaction loses detail. Breaking work into atomic tasks — each with a fresh clean-context session that reads only CLAUDE.md, the spec, and the plan — sidesteps this problem entirely, keeping each session's starting context minimal and focused. [[wiki/sources/manuale-terza-lezione]]
+**Granular decomposition** is what makes context management tractable. Breaking work into atomic tasks — each with a fresh session that reads only CLAUDE.md, the spec, and the plan — keeps each session's starting context minimal and focused, avoiding context-window degradation over long sessions. [[wiki/sources/manuale-terza-lezione]]
 
-**Iterative review** closes the loop. The most important evidence here is the EV-002 case study: a real production feature (Configurable Working Hours) implemented with a 35-line prompt produced ~60–70% AI coverage because the spec lacked the hierarchy model, migration logic, and UI details. Retrospective analysis showed a 150-line spec would have achieved ~95% coverage with far fewer correction cycles. Review does not just catch bugs — it reveals specification gaps that, if identified during spec authoring instead, would have prevented the bugs entirely. [[wiki/sources/manuale-quarta-lezione]]
+**Spec-as-documentation** has concrete engineering implications: specs and plans should be version-controlled alongside code as first-class assets. The course recommends building personal spec and prompt libraries organized by category. [[wiki/sources/manuale-terza-lezione]]
 
-**Human-in-the-loop** is a gating mechanism, not a stylistic preference. In the Traditional Workflow it is enforced by Planning Mode (Claude refuses to write files). In the Advanced Workflow it is enforced by the brainstorming process, which surfaces architectural decisions for explicit human approval before the spec document is produced. Architectural trade-offs — framework selection, database design, state management — are never delegated silently. [[wiki/sources/manuale-quarta-lezione]]
+### The SuperPowers plugin: mechanics
 
-**Spec-as-documentation** has concrete engineering implications: specs and development plans should be version-controlled alongside code as first-class assets. A spec that produced good results is a reusable asset; the same spec, run on a future model version with minor modifications, should reproduce the result. The course recommends building personal spec and prompt libraries organized by category. [[wiki/sources/manuale-terza-lezione]]
+SuperPowers, developed by Jess Vincent, is the plugin that enables the Advanced SDD Workflow. Its primary skill is `/brainstorming` — a structured Socratic dialogue that co-produces a specification with the human. It also provides the Sub-Agent Driven Development execution skill used in the execution phase. Both workflow phases — brainstorming *and* sub-agent execution — run through SuperPowers, making it the single dependency for the entire Advanced Workflow.
 
-### The seven-component schema: what each element does
+Installation follows the standard plugin procedure (`claude plugin install <name>` from a terminal outside any Claude Code session, then a full Claude Desktop restart). Currently loaded plugins can be verified at any time via `/skills` inside a Claude Code session. [[wiki/sources/manuale-quarta-lezione]]
 
-The specification schema maps directly to why vague prompts fail:
+### `/brainstorming`: step-by-step mechanics
 
-| Component | Why it matters |
-|-----------|----------------|
-| Overview | Domain grounding that lets Claude interpret ambiguous requirements correctly |
-| Functional requirements | The core contract — expressed as behavior, not code |
-| Non-functional requirements | Most commonly omitted, most expensive to retrofit: security, performance, accessibility |
-| Technical constraints | Narrows implementation space when architecture is pre-decided |
-| Acceptance criteria | Makes the spec testable; without them, "done" is a judgment call |
-| Use cases / examples | Reduces interpretation variance more than any other element; concrete beats abstract |
-| Error handling | Surfaces failure modes the AI would otherwise invent ad hoc |
+The command signature is `/brainstorming [STRUCTURED PROMPT]`. A well-formed invocation follows the TCOF schema (Task, Context, Output, Format) and typically includes a reference to the existing development plan:
 
-The EV-002 comparison quantifies what happens when several components are missing: 3 generic functional requirements vs. 7 detailed ones; no data schema vs. 4 entities with fields and constraints; no UI spec vs. labels, editor, layout, error messages; implicit business rules vs. explicit holiday, cascade, and exception logic. Adding those components raised estimated AI coverage by ~35 percentage points. [[wiki/sources/manuale-quarta-lezione]]
+```
+/brainstorming # Task: Sprint Zero - Setup Infrastruttura
+## Obiettivo Configurare l'architettura base del progetto Shopping List
+## Requisiti Test Hello World funzionante al termine
+## Contesto Leggi il piano di sviluppo in /docs/development-plan.md
+```
 
-### Two workflow variants: evidence from production
+The more structured the initial prompt, the more targeted Claude's questions — a TCOF prompt with a plan reference allows Claude to skip obvious questions and focus on genuinely non-trivial ambiguities. [[wiki/sources/manuale-quinta-lezione]]
 
-The **Traditional Workflow** follows six sequential phases: structured prompt → Claude Q&A to resolve ambiguities → development plan → refined spec → diff-by-diff controlled execution → post-implementation review. Its strength is speed for well-defined, scope-limited tasks. Its weakness is that spec quality depends entirely on the human's ability to anticipate all requirements before starting — an unrealistic expectation for complex cross-layer problems.
+Once triggered, the session proceeds in four stages:
 
-The **Advanced Workflow** addresses this by making spec co-production collaborative. Activated by `/brainstorming` (SuperPowers plugin), Claude reads the CLAUDE.md, explores the existing codebase, proposes architectural options with trade-offs, asks interactive questions (some as clickable menus), and at the end auto-generates a specification document — which it self-reviews before presenting for human approval. Only after approval does it generate the development plan. The EV-003 case study demonstrates the outcome: the complete cycle for a production Gantt date-calculation feature (brainstorming + spec + plan + development + test + refactoring + user manual + release) was completed in approximately one working day, with only one post-implementation correction cycle needed (an MVC-WebAPI controller detail the brainstorming had not surfaced). [[wiki/sources/manuale-quarta-lezione]]
+**Stage 1 — Context loading.** Claude reads the project's CLAUDE.md to anchor questions in the existing architecture and conventions, then explores the codebase to understand current state.
 
-Workflow selection heuristic: use the Traditional Workflow when requirements are clear and architecture is settled (standard CRUD, small scope, time pressure); use the Advanced Workflow when the problem requires exploration (new algorithms, cross-layer refactoring, unknown architecture, broad scope, or building a prototype from scratch). [[wiki/sources/manuale-quarta-lezione]]
+**Stage 2 — Socratic Q&A.** Claude asks targeted questions covering: blocking constraints not considered initially (e.g., unavailable external services), architectural decisions that will affect implementation, user preferences on alternative approaches, and scope definition (what is in-scope vs. out-of-scope). Some questions are textual; some appear as clickable choice menus. For questions involving architectural trade-offs the user cannot evaluate without domain knowledge, the recommended practice is to open a parallel Claude chat to understand the options before answering within the brainstorming — this preserves human-in-the-loop without forcing uninformed decisions. Claude can also start a local server and display interactive mockups in the browser during this phase (observed spontaneously in the Shopping List live demo). [[wiki/sources/manuale-quarta-lezione]]
 
-### Three operational configuration tiers
+**Stage 3 — Automatic spec generation.** At the end of the dialogue, Claude generates a structured specification document covering: objective and task scope, architectural decisions made during brainstorming, dependencies and packages to install, tasks deferred to future sprints (out-of-scope), and acceptance criteria. The spec is saved to `/specs/`. Claude performs a **self-review** of the spec before presenting it to the user — a built-in quality gate that catches internal inconsistencies before human review. [[wiki/sources/manuale-quinta-lezione]]
 
-Lesson 5 introduces a separate dimension of SDD maturity: how deeply the Claude Code environment is configured before development begins.
+**Stage 4 — Development plan generation.** After the user approves the spec, Claude generates the development plan in `/plans/`. The plan contains: a detailed action sequence; for each action — objective, files to create/modify, expected result. Critically, the plan includes a **"For Agentic Workers" section** that explicitly specifies which tasks can run in parallel and which must run sequentially — this is what the orchestrator reads when Sub-Agent Driven Development is activated. At sprint end, it is good practice to update the macro plan explicitly: `"Aggiorna il piano di sviluppo macro in /docs/development-plan.md in base a ciò che abbiamo appreso e deciso durante questo sprint."` [[wiki/sources/manuale-quinta-lezione]]
 
-**Workflow Lite** generates a CLAUDE.md directly from the project idea. Fast setup; spec and configuration quality depend heavily on the initial prompt. Appropriate for quick prototypes.
+### `/feature-dev:feature-dev`: the Anthropic-official alternative
 
-**Workflow Intermediate** (recommended default) uses a Claude Desktop Project as the knowledge base. The sequence: brainstorm in Desktop → metaprompt to generate three configuration artifacts (short description, project context, project instructions) → enrich the knowledge base with Cowork analyses (framework analysis, SRS document) → generate a modularized CLAUDE.md from within the project. The configuration produced this way has access to all accumulated project knowledge, producing qualitatively more grounded CLAUDE.md content.
+Feature Dev is Anthropic's own plugin for structured feature development on existing projects. Its positioning is explicitly distinct from `/brainstorming`: designed for situations where the architecture is already defined and the goal is to add a controlled, well-scoped feature. The practical distinction is scope and exploration depth:
 
-**Workflow Advanced** adds five specialized best-practice guide documents to the project before CLAUDE.md generation: Claude Code config best practices, enforcement rules, modularization guidelines, file referencing guide, and universal cross-framework best practices. With these in the knowledge base, the generator has explicit domain knowledge rather than having to infer it — producing a superior configuration for long-term structured projects at the cost of a heavier initial setup. [[wiki/sources/manuale-quinta-lezione]]
+- **`/brainstorming`** (SuperPowers): performs codebase exploration, proposes architectural options, asks Socratic questions, generates spec + plan from scratch. Best for: new projects, complex cross-layer problems, algorithm design, unknown architecture, broad scope.
+- **`/feature-dev:feature-dev`** (Anthropic): follows a guided workflow for adding features to an established project. Best for: well-defined features, standard CRUD/UI/report patterns, settled architecture, clear requirements.
 
-### CLAUDE.md structure and modularization
+The key decision signal: if you could write the spec manually with confidence (architecture and requirements both clear), `/feature-dev:feature-dev` is appropriate; if you need exploration to discover what the spec should even contain, `/brainstorming` is required. In practice, `/feature-dev:feature-dev` occupies the same problem space as the Traditional Workflow but with plugin-guided structure rather than raw Planning Mode — it is not a replacement for brainstorming on complex problems. [[wiki/sources/manuale-quarta-lezione]]
 
-CLAUDE.md functions as the per-session system prompt — the "operating system" of the project folder, auto-loaded at every session start. Recommended sections: Purpose and Context; Absolute Principles (inviolable rules: "max 200 lines per file", "app must always work offline"); Technology Stack; Architecture; Proactive Instructions (tasks Claude executes autonomously after each sprint, such as updating a project map); File Reading Rules (lazy vs. eager loading); and Enforcement Rules (programming best-practice reminders).
+### Sub-Agent Driven Development: execution layer
 
-Modularization is strongly recommended for medium and large projects. Each sub-agent spawned during parallel execution loads CLAUDE.md as its base context — a monolithic 2000-line file consumes significant context window before any task-specific information is loaded; a modular system with lazy loading lets each agent load only what its task requires. [[wiki/sources/manuale-quinta-lezione]]
-
-### Sub-Agent Driven Development
-
-The development plan's "For Agentic Workers" section controls parallel vs. sequential execution. The orchestrator reads the plan, identifies parallelizable tasks, and instantiates sub-agents — each receiving CLAUDE.md as base context plus task-specific instructions. Sub-agents work independently, report results to the orchestrator, which consolidates and resolves conflicts before coordinating review. The plan generated by the Advanced Workflow already includes cross-agent code review tasks, providing automatic inter-agent quality checking before the human's final review.
+The execution phase runs through SuperPowers. The orchestrator reads the plan (specifically the "For Agentic Workers" section), identifies parallelizable tasks, and instantiates sub-agents — each receiving CLAUDE.md as base context plus task-specific instructions. Sub-agents work independently without communicating during execution; they report results to the orchestrator, which consolidates, resolves conflicts, and coordinates review. The plan generated by the Advanced Workflow already includes cross-agent code review tasks — automatic inter-agent quality checking before the human's final review. This is the source of the quality advantage over sequential execution, not just the speed gain.
 
 | Aspect | Sequential | Sub-Agent (Parallel) |
 |--------|-----------|---------------------|
@@ -133,16 +128,38 @@ The development plan's "For Agentic Workers" section controls parallel vs. seque
 
 [[wiki/sources/manuale-quinta-lezione]]
 
+### Three operational configuration tiers
+
+A separate dimension of SDD maturity: how deeply the Claude Code environment is configured before development begins.
+
+**Workflow Lite** generates a CLAUDE.md directly from the project idea. Fast setup; spec and configuration quality depend heavily on the initial prompt. Appropriate for quick prototypes.
+
+**Workflow Intermediate** (recommended default) uses a Claude Desktop Project as the knowledge base. The sequence: brainstorm in Desktop → metaprompt to generate three configuration artifacts (short description, project context, project instructions) → enrich the knowledge base with Cowork analyses (framework analysis, SRS document) → generate a modularized CLAUDE.md from within the project. The configuration produced this way has access to all accumulated project knowledge, producing qualitatively more grounded CLAUDE.md content.
+
+**Workflow Advanced** adds five specialized best-practice guide documents to the project before CLAUDE.md generation: Claude Code config best practices, enforcement rules, modularization guidelines, file referencing guide, and universal cross-framework best practices. The Advanced Workflow's CLAUDE.md generation also produces a macro development plan (with sprints) and a project file map automatically — foundational artifacts for starting the SDD cycle in Claude Code. [[wiki/sources/manuale-quinta-lezione]]
+
+### CLAUDE.md structure and modularization
+
+CLAUDE.md functions as the per-session system prompt — the "operating system" of the project folder, auto-loaded at every session start. Recommended sections: Purpose and Context; Absolute Principles (inviolable rules: "max 200 lines per file", "app must always work offline"); Technology Stack; Architecture; Proactive Instructions (tasks Claude executes autonomously after each sprint, such as updating a project map); File Reading Rules (lazy vs. eager loading); and Enforcement Rules (programming best-practice reminders).
+
+Modularization is strongly recommended for medium and large projects. Each sub-agent spawned during parallel execution loads CLAUDE.md as its base context — a monolithic 2000-line file consumes significant context window before any task-specific information is loaded; a modular system with lazy loading lets each agent load only what its task requires. [[wiki/sources/manuale-quinta-lezione]]
+
 ### Advanced slash commands for CLAUDE.md lifecycle
 
-The CLAUDE.md Management plugin provides commands that treat the configuration file as a living document: `/revise-claude-md` (proposes updates after each sprint based on what was learned — requires approval before applying), `/claude-md-improver` (structural improvement analysis of the existing file with a quality score), `/automation-recommender` (suggests plugins, MCP servers, or skills the project could benefit from), and `/advisor` (escalates to a stronger model when Claude is blocked — slight token increase, useful for complex debugging or architectural decisions). [[wiki/sources/manuale-quinta-lezione]]
+The CLAUDE.md Management plugin provides commands that treat the configuration file as a living document: `/revise-claude-md` (proposes updates after each sprint based on what was learned — requires approval before applying), `/claude-md-improver` (structural improvement analysis with a quality score — not limited to incremental additions, proposes structural optimizations), `/automation-recommender` (suggests plugins, MCP servers, or skills the project could benefit from — best used at advanced development stages, not every sprint), and `/advisor` (configures Claude Code to automatically consult a more capable model when blocked — slight token increase, useful for complex debugging or architectural decisions). [[wiki/sources/manuale-quinta-lezione]]
+
+### Production evidence: two case studies
+
+**Traditional Workflow limitation (EV-002 — Configurable Working Hours):** a 35-line prompt produced ~60–70% AI coverage because the spec lacked the three-level hierarchy model (default → weekly pattern → override), absence migration logic, holiday integration, and UI specifics. Retrospective analysis showed a 150-line spec — 7 detailed functional requirements, 4 data entities with fields and constraints, explicit UI specs, explicit business rules — would have achieved ~95% coverage. Claude identified 5+ ambiguities during Q&A; each unresolved ambiguity became a post-implementation correction cycle. [[wiki/sources/manuale-quarta-lezione]]
+
+**Advanced Workflow capability (EV-003 — Modified Gantt Date Calculation):** the complete cycle (brainstorming + spec + plan + development + test + refactoring + user manual + release) was completed in approximately one working day. Time breakdown: ~3h brainstorming and planning (including codebase exploration), ~2h development, ~1h test and bug fixing, ~4h code refactoring, ~30min documentation and release. One post-implementation correction cycle was required for an MVC-WebAPI separation constraint the brainstorming had not surfaced — confirming that brainstorming reduces specification gaps but does not eliminate the need for post-implementation review. [[wiki/sources/manuale-quarta-lezione]]
 
 ### Limitations and open questions
 
-**Gaps persist even with brainstorming.** EV-003 required a correction cycle after implementation for an MVC-WebAPI separation constraint the brainstorming had not surfaced. Post-implementation review remains necessary. Brainstorming reduces correction frequency and cost — it does not eliminate the need.
+**Gaps persist even with brainstorming.** EV-003 required a correction cycle after implementation for an MVC-WebAPI constraint the brainstorming had not surfaced. Post-implementation review remains necessary. Brainstorming reduces correction frequency and cost — it does not eliminate it.
 
-**Spec quality still requires domain judgment.** The Advanced Workflow co-produces the spec, but the human must answer architectural choice questions with sufficient knowledge. For unfamiliar technical domains, the course's mitigation — open a parallel chat to understand trade-offs before answering within the brainstorming session — works but means the human is not always genuinely in-the-loop on technical decisions.
+**Spec quality still requires domain judgment.** The Advanced Workflow co-produces the spec, but the human must answer architectural choice questions with sufficient knowledge. For unfamiliar technical domains, the course mitigation — open a parallel chat to understand trade-offs before answering within the brainstorming — works but means the human is not always genuinely in-the-loop on technical decisions.
 
 **Token economics are a real operational constraint.** Sub-Agent Driven Development is token-intensive; the configuration phase is expensive. Practical guidance: separate configuration sessions from development sessions, use Sonnet for code generation and Opus for strategic analysis, modularize CLAUDE.md, and plan sprint boundaries against weekly usage limits. [[wiki/sources/manuale-quinta-lezione]]
 
-**The coverage figures are self-assessed.** The 60–70% vs. ~95% AI coverage comparison between the 35-line and 150-line specifications is based on Claude's own retrospective assessment of the EV-002 feature, not an independent empirical measurement. It is a useful heuristic but should not be treated as a precise empirical claim.
+**The coverage figures are self-assessed.** The 60–70% vs. ~95% AI coverage comparison between the 35-line and 150-line specifications is based on Claude's own retrospective assessment of EV-002, not an independent empirical measurement. It is a useful heuristic but should not be treated as a precise empirical claim.

@@ -40,3 +40,5 @@ Cowork is introduced as an agentic execution environment for non-technical users
 - [[wiki/pages/cowork]] — introduced and demonstrated here
 - [[wiki/pages/memory-in-claude]] — memory hierarchy fully mapped here
 - [[wiki/pages/context-window]] — relationship to project knowledge and RAG
+- [[wiki/pages/artifacts]] — used as explicit context checkpoints before auto-compaction
+- [[wiki/pages/sub-agents]] — Cowork spawns sub-agents for parallel document analysis

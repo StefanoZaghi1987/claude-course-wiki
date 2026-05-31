@@ -44,3 +44,5 @@ The document opens with the fundamental constraint: Claude's context window fill
 - [[wiki/pages/sub-agents]] — subagents as the primary tool for context isolation
 - [[wiki/pages/claude-md]] — CLAUDE.md discipline and pruning
 - [[wiki/pages/sessions-management]] — session management patterns
+- [[wiki/pages/plugins]] — hooks, MCP connections, and skills referenced as environment setup tools
+- [[wiki/pages/skills]] — skills as repeatable workflow automation

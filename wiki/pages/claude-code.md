@@ -86,3 +86,5 @@ Seven extensions plug into the agentic loop on top of the built-in tools: CLAUDE
 - [[wiki/sources/quickstart-claude-code-docs]] — installation, authentication, essential CLI forms
 - [[wiki/sources/how-claude-code-works-claude-code-docs]] — agentic loop, tool categories, execution environments, session model
 - [[wiki/sources/extend-claude-code-claude-code-docs]] — extension layer decision guide: CLAUDE.md vs skills vs subagents vs MCP vs hooks
+- [[wiki/sources/common-workflows-claude-code-docs]] — everyday development recipes: explore, debug, test, PR, sessions, parallel, piping
+- [[wiki/sources/best-practices-for-claude-code-claude-code-docs]] — context management, verification-first, explore-plan-code, environment setup, scaling

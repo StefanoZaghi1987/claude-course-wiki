@@ -19,7 +19,7 @@ A plugin is a bundled package of one or more functional components that extend w
 
 ### Installation and restart requirement
 
-Plugins are installed from the terminal (not the Claude Desktop GUI): `claude plugin install <plugin-name>`. After installation, Claude Desktop must be fully quit and relaunched (File → Quit, then reopen) for the new plugin to be available. The `/skills` slash command in Claude Code lists all currently active plugins. [[wiki/sources/manuale-quarta-lezione]]
+Plugins are installed from the terminal (not the Claude Desktop GUI): `claude plugin install <plugin-name>`. After installation, Claude Desktop must be fully quit and relaunched (File → Quit, then reopen) for the new plugin to be available. The `/skills` slash command in Claude Code lists all currently active skills. [[wiki/sources/manuale-quarta-lezione]]
 
 ### Organizational management levels
 
@@ -56,4 +56,5 @@ Claude Desktop/Cowork uses `.plugin` (ZIP) format files with a GUI browser; Clau
 ## Sources
 
 - [[wiki/sources/manuale-quarta-lezione]] — plugin architecture, installation, org management, SDD-relevant plugins
-- [[wiki/sources/manuale-sesta-lezione]] — detailed Skills anatomy, Skill creation methods- [[wiki/sources/plugin-guida]] — complete plugin reference across all platforms
+- [[wiki/sources/manuale-sesta-lezione]] — detailed Skills anatomy, Skill creation methods
+- [[wiki/sources/plugin-guida]] — complete plugin reference across all platforms

@@ -43,3 +43,4 @@ The auto mode classifier uses conversation history, tool calls, and CLAUDE.md co
 - [[wiki/pages/permission-modes]] — the wiki concept page for this system
 - [[wiki/pages/claude-code]] — the environment where modes apply
 - [[wiki/pages/sessions-management]] — checkpoints (file snapshots) are the undo mechanism companion to permissions
+- [[wiki/pages/skills]] — .claude/skills/ is a protected path excluded from auto-approval restrictions

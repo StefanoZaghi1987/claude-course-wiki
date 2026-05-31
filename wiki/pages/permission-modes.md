@@ -46,6 +46,7 @@ Before Claude edits any file, it snapshots the current contents. If something go
 
 - [[wiki/pages/claude-code]] — the environment where permission modes apply
 - [[wiki/pages/sessions-management]] — checkpoints and rewind operate within sessions
+- [[wiki/pages/plan-mode]] — plan mode as a dedicated concept page within the six-mode spectrum
 
 ## Sources
 

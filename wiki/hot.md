@@ -1,18 +1,7 @@
 ## [2026-05-31]
 
-Expanded `wiki/pages/spec-driven-development.md` with a full `## Deep dive` section. Read all
-four source PDFs in their entirety (manuale-prima, terza, quarta, quinta lezione). The deep dive
-covers: the paradigm inversion argument, the four-approach model and the "stone" metaphor, all
-five principles with their mutual dependencies and failure modes, the seven-component spec schema
-with the EV-002 quantitative evidence (35-line → 60-70% coverage vs. 150-line → ~95%), the two
-workflow variants with the EV-003 one-day production case study, the three operational
-configuration tiers (Lite / Intermediate / Advanced), CLAUDE.md modularization rationale,
-Sub-Agent Driven Development execution trade-offs, advanced slash commands lifecycle, and a
-limitations section including the "self-assessed coverage figures" caveat. Frontmatter updated
-with `expanded: 2026-05-31`; `wiki/index.md` marked `(expanded)`; `wiki/log.md` appended.
+Re-expanded `wiki/pages/spec-driven-development.md` with a focused rewrite of `## Deep dive` covering the three workflow tools in depth: SuperPowers plugin mechanics (by Jess Vincent, `/skills` verification, dual role as brainstorming + sub-agent execution), `/brainstorming` four-stage protocol (TCOF invocation pattern, clickable Q&A menus, browser mockups, spec saved to `/specs/` with self-review, plan saved to `/plans/` with "For Agentic Workers" section, macro plan update command), and `/feature-dev:feature-dev` (Anthropic-official, best for settled-architecture feature additions, decision signal vs brainstorming). Also resolved open review finding B-1: the apparent inconsistency in SDD principle names is a genuine terminological evolution between Lesson 4 and Lesson 5 — both formulations are correct for their respective lessons; the page now documents this explicitly. Preserved all existing strong analysis (paradigm inversion, stone metaphor, case study data, sub-agent comparison table, limitations). Updated `wiki/index.md` entry description and appended to `wiki/log.md`.
 
-Still open from previous session: no lint run done since vault was first populated — "(to be added)"
-source references in some early pages are now resolvable; `wiki/compass.md` still does not exist.
+Still open: B-3 from the last review pass — `claude-code.md` cites manuale-terza-lezione for the "50% context fill warnings appear" threshold; neither that source summary nor `explore-the-context-window-claude-code-docs` confirms the specific figure. Needs the raw PDF for manuale-terza-lezione to verify or correct the citation.
 
-Next: run `/lint` to catch dead links and resolve the "(to be added)" stubs, then run `/reflect`
-to create `compass.md` — the vault now has enough depth to make a reflect meaningful.
+Next: run `/reflect` to create `wiki/compass.md` — the vault now has 26 pages, a full review pass, and two expand runs behind it, making this the right moment for a first compass.

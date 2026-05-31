@@ -38,3 +38,5 @@ The context window holds conversation history, file contents, command outputs, C
 - [[wiki/pages/permission-modes]] — checkpoints and safety mechanisms described here
 - [[wiki/pages/claude-md]] — the persistent configuration loaded every session
 - [[wiki/pages/memory-in-claude]] — auto memory as the cross-session learning mechanism
+- [[wiki/pages/skills]] — extension layer on top of built-in tools
+- [[wiki/pages/sub-agents]] — extension layer for context isolation and parallel work

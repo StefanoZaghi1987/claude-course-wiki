@@ -40,3 +40,4 @@ Two real cases from Gamma's Task Management application demonstrate the differen
 - [[wiki/pages/sub-agents]] — parallelization mechanism in the Advanced workflow
 - [[wiki/pages/meta-prompting]] — brainstorming is meta-prompting taken to a structured socratic form
 - [[wiki/pages/vibe-coding]] — the explicit contrast throughout the lesson
+- [[wiki/pages/skills]] — one of the four plugin component types; primary workflow orchestration tool

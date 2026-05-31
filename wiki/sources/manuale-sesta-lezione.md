@@ -43,3 +43,4 @@ The session closes with Stefano's strategic vision for Gamma: GammaBot as the br
 - [[wiki/pages/mcp-model-context-protocol]] — main topic of sections 6–7
 - [[wiki/pages/plugins]] — contextual architecture overview
 - [[wiki/pages/cowork]] — Method 2 Skill creation; Cowork as the agentic development environment for testing-intensive Skills
+- [[wiki/pages/claude-desktop]] — Skill levels, claude-desktop-config.json MCP configuration, local MCP servers auto-start with Claude Desktop

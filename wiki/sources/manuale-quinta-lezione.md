@@ -44,3 +44,6 @@ The token management section is practical: separate configuration sessions from 
 - [[wiki/pages/sub-agents]] — sequential vs. parallel execution comparison
 - [[wiki/pages/cowork]] — used for knowledge base enrichment and CLAUDE.md generation
 - [[wiki/pages/meta-prompting]] — three configuration artifacts generated via meta-prompting
+- [[wiki/pages/artifacts]] — project configuration artifacts (short description, project context, project instructions) generated via meta-prompting
+- [[wiki/pages/plugins]] — CLAUDE.md Management plugin and plugin-based slash commands (/revise-claude-md, /claude-md-improver, /advisor)
+- [[wiki/pages/skills]] — skill-based workflows (/brainstorming) used throughout the SDD cycle

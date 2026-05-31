@@ -8,7 +8,7 @@ Catalog of the vault. Updated on every write operation.
 - [claude-code](pages/claude-code.md) — CLI agentic environment: commands, operating modes, CLAUDE.md, sub-agents
 - [claude-desktop](pages/claude-desktop.md) — Claude Desktop app: three operating modes, chat management, plans
 - [claude-md](pages/claude-md.md) — CLAUDE.md: static project config for Claude Code, auto-loaded at session start
-- [spec-driven-development](pages/spec-driven-development.md) — specifications-as-source-of-truth methodology; 5 principles, 7 components, workflow variants (expanded)
+- [spec-driven-development](pages/spec-driven-development.md) — specifications-as-source-of-truth methodology; 5 principles, 7 components, /brainstorming mechanics, /feature-dev:feature-dev positioning, sub-agent execution (expanded)
 - [claude-projects](pages/claude-projects.md) — persistent workspaces with fixed instructions, knowledge base (RAG), and team sharing
 - [context-window](pages/context-window.md) — session working memory: saturation, strategies, plan tier differences
 - [memory-in-claude](pages/memory-in-claude.md) — three non-overwriting memory levels: global preferences, chat extraction, project scope
@@ -25,6 +25,11 @@ Catalog of the vault. Updated on every write operation.
 - [sessions-management](pages/sessions-management.md) — session lifecycle: resume, fork, branch, name; picker; context controls; worktrees for parallel work
 - [claude-directory](pages/claude-directory.md) — .claude/ project files and ~/.claude/ home directory: every file Claude reads and writes
 - [remote-control](pages/remote-control.md) — continue a local Claude Code session from any browser or phone; execution stays on your machine
+- [plan-mode](pages/plan-mode.md) — read-only exploration mode; Claude proposes a plan before any file is edited
+- [agent-driven-development](pages/agent-driven-development.md) — parallel sub-agent execution pattern for SDD; faster wall-clock, higher quality, more tokens
+- [absolute-principles](pages/absolute-principles.md) — inviolable CLAUDE.md rules that Claude must never break, regardless of task
+- [proactive-instructions](pages/proactive-instructions.md) — CLAUDE.md tasks Claude executes autonomously at the end of each sprint
+- [file-reading-rules](pages/file-reading-rules.md) — CLAUDE.md section controlling eager vs. lazy file loading to manage context cost
 
 ## Sources
 

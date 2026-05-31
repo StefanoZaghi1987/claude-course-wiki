@@ -37,7 +37,18 @@ Pages updated: claude-desktop (Code tab features, parallel sessions, diff view, 
 Sources ingested: choose-a-permission-mode-claude-code-docs, manage-sessions-claude-code-docs, explore-the-claude-directory-claude-code-docs
 Pages created: permission-modes, sessions-management, claude-directory
 
+## [2026-05-31] lint-fix | full vault repair
+Orphans resolved (3): best-practices-for-claude-code-claude-code-docs, common-workflows-claude-code-docs, use-claude-code-in-vs-code-claude-code-docs linked from wiki pages
+Cross-references added (17): connections added to 10 source files (best-practices, choose-a-permission-mode, desktop-application, get-started-desktop, how-claude-code-works, manuale-prima, quarta, quinta, seconda, sesta lezione)
+Pages created (5): plan-mode, agent-driven-development, absolute-principles, proactive-instructions, file-reading-rules
+
 ## [2026-05-31] expand | spec-driven-development
+Re-expanded with workflow tool focus: /superpowers mechanics, /brainstorming 4-stage protocol (TCOF invocation, /specs and /plans output paths, self-review step, "For Agentic Workers" section), /feature-dev:feature-dev positioning vs brainstorming, two-formulation resolution for 5 SDD principles (Lesson 4 vs Lesson 5 naming). Also resolves open review finding B-1.
+
+## [2026-05-31] review | scope: all | findings: 5
+## [2026-05-31] review-fix | applied 2 findings from review report
+Fixed: C-1 formatting (cowork.md, meta-prompting.md, plugins.md — merged Sources list entries separated); B-2 plugins.md (/skills claim corrected: "plugins" → "skills")
+Pending manual review: B-1 (5 SDD principle names — raw PDF required), B-3 (50% context threshold citation — raw PDF required)
 
 ## [2026-05-31] ingest | official-docs-batch-a (6 sources)
 Sources ingested: overview-claude-code-docs, quickstart-claude-code-docs, how-claude-code-works-claude-code-docs, extend-claude-code-claude-code-docs, explore-the-context-window-claude-code-docs, how-claude-remembers-your-project-claude-code-docs

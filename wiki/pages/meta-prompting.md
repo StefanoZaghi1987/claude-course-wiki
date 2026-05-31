@@ -42,4 +42,5 @@ The `/brainstorming` command from the SuperPowers plugin implements a structured
 ## Sources
 
 - [[wiki/sources/manuale-seconda-lezione]] — meta-prompting introduced and demonstrated with the Beas Assistant exercise
-- [[wiki/sources/manuale-terza-lezione]] — "Context is All You Need" exercise using meta-prompting for project config- [[wiki/sources/manuale-quarta-lezione]] — `/brainstorming` as structured meta-prompting in SDD
+- [[wiki/sources/manuale-terza-lezione]] — "Context is All You Need" exercise using meta-prompting for project config
+- [[wiki/sources/manuale-quarta-lezione]] — `/brainstorming` as structured meta-prompting in SDD

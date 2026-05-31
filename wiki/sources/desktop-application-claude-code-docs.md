@@ -47,3 +47,5 @@ Desktop runs the same engine as the CLI; configuration is shared (CLAUDE.md file
 - [[wiki/pages/remote-control]] — alternative way to access a local session from another device
 - [[wiki/pages/sessions-management]] — session lifecycle applies to Desktop Code tab sessions
 - [[wiki/pages/permission-modes]] — all modes available in Desktop except dontAsk
+- [[wiki/pages/cowork]] — Cowork tab hosts Dispatch; agentic background tasks
+- [[wiki/pages/skills]] — skills are part of the shared Desktop/CLI configuration

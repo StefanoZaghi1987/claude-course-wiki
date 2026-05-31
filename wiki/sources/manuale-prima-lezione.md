@@ -42,3 +42,4 @@ The session ended with an introduction to Claude Projects as the answer to re-wr
 - [[wiki/pages/mcp-model-context-protocol]] — introduced in this lesson
 - [[wiki/pages/vibe-coding]] — introduced and critiqued here
 - [[wiki/pages/claude-projects]] — introduced as the next step
+- [[wiki/pages/cowork]] — introduced as the third Claude Desktop operating mode

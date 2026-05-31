@@ -66,3 +66,4 @@ Desktop adds visual review, Dispatch, Preview server, and git worktree automatio
 - [[wiki/sources/manuale-prima-lezione]] — full interface overview, operating modes, chat management, and plans
 - [[wiki/sources/desktop-application-claude-code-docs]] — Code tab features: parallel sessions, diff view, computer use, Dispatch, SSH, Preview, enterprise config
 - [[wiki/sources/get-started-with-the-desktop-app-claude-code-docs]] — Desktop quickstart: environments, first session, key features overview
+- [[wiki/sources/use-claude-code-in-vs-code-claude-code-docs]] — VS Code extension as alternative graphical interface; built-in MCP server; permission modes match CLI

@@ -73,3 +73,4 @@ Since sessions are tied to directories, parallel Claude Code sessions require se
 
 - [[wiki/sources/manage-sessions-claude-code-docs]] — session lifecycle, resume, naming, branching, picker, transcript storage
 - [[wiki/sources/how-claude-code-works-claude-code-docs]] — session model, JSONL storage, resume and fork mechanics
+- [[wiki/sources/common-workflows-claude-code-docs]] — resume patterns, parallel sessions with worktrees, plan mode, subagent delegation

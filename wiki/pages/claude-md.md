@@ -79,6 +79,9 @@ Claude Code reads `CLAUDE.md`, not `AGENTS.md`. For repos that already use AGENT
 - [[wiki/pages/memory-in-claude]] — memory.md is the dynamic complement to the static CLAUDE.md
 - [[wiki/pages/meta-prompting]] — the recommended technique for generating CLAUDE.md content
 - [[wiki/pages/spec-driven-development]] — CLAUDE.md is the project configuration that grounds SDD sessions
+- [[wiki/pages/absolute-principles]] — the inviolable-rules section of the recommended CLAUDE.md structure
+- [[wiki/pages/proactive-instructions]] — the autonomous sprint-end tasks section of the recommended CLAUDE.md structure
+- [[wiki/pages/file-reading-rules]] — the eager/lazy file loading strategy section of the recommended CLAUDE.md structure
 
 ## Sources
 
